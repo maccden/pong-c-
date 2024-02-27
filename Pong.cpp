@@ -3,7 +3,7 @@
 
 typedef enum GameScreen
 {
-    PAUSA = 0,
+    PAUSE = 0,
     GAME
 } GameScreen;
 
@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
         // update de los variables de cada menu
         switch (currentScreen)
         {
-        case PAUSA:
+        case PAUSE:
         {
             if (IsKeyPressed(KEY_P))
                 currentScreen = GAME;
@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
         case GAME:
         {
             if (IsKeyPressed(KEY_P))
-                currentScreen = PAUSA;
+                currentScreen = PAUSE;
             break;
         }
         default:
@@ -56,10 +56,10 @@ int main(int argc, char const *argv[])
             // cambio de menus
             switch (currentScreen)
             {
-            case PAUSA:
+            case PAUSE:
             {
                 ClearBackground(BLACK);
-                DrawText("PAUSA", SCREEN_W / 2 - MeasureText("PAUSA", FONT_SIZE_1) / 2, SCREEN_H / 2 - FONT_SIZE_1 / 2, FONT_SIZE_1, WHITE);
+                DrawText("PAUSE", SCREEN_W / 2 - MeasureText("PAUSE", FONT_SIZE_1) / 2, SCREEN_H / 2 - FONT_SIZE_1 / 2, FONT_SIZE_1, WHITE);
                 break;
             }
             case GAME:
