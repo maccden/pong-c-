@@ -3,7 +3,7 @@
 
 typedef enum GameScreen
 {
-    PAUSE = 0,
+    PAUSE,
     GAME
 } GameScreen;
 
