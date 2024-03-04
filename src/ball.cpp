@@ -1,4 +1,4 @@
-#include "../include/Ball.hpp"
+#include "../include/ball.hpp"
 
 const int Ball::RADIUS = 10;
 const Vector2 Ball::DEFAULT_SPEED = {5, 5};

@@ -1,5 +1,5 @@
-#include "include/Player.hpp"
-#include "include/Ball.hpp"
+#include "../include/player.hpp"
+#include "../include/ball.hpp"
 
 typedef enum GameScreen
 {
