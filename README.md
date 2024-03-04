@@ -5,10 +5,10 @@ This is a C++ version of the classic Pong game, created with Raylib and CMake fo
 ## Build
 It is a CMake project, so it builds very simply. Open a terminal inside this folder:
 ```shell
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make
+mkdir build
+cd build
+cmake ..
+make
 ```
 
 ## Run
