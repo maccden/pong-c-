@@ -1,6 +1,6 @@
-#pragma once
+#ifndef BALL_HEADER
+#define BALL_HEADER
 
-#include "raylib.h"
 #include "../include/player.hpp"
 
 class Ball
@@ -21,3 +21,5 @@ public:
     void drawBall();
     Vector2 getBallPos();
 };
+
+#endif

@@ -3,4 +3,5 @@ bin/
 build/
 /.vscode
 .idea/
+.cache/
 CMakeSettings.json

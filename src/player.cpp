@@ -1,5 +1,4 @@
 #include "../include/player.hpp"
-#include "raymath.h"
 
 const Vector2 Player::PLAYER_SIZE = {10.0f, 100.0f};
 const float Player::SPEED = 7.0f;

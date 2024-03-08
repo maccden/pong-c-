@@ -1,6 +1,7 @@
-#pragma once
+#ifndef PLAYER_HEADER
+#define PLAYER_HEADER
 
-#include "raylib.h"
+#include "utils.h"
 
 class Player
 {
@@ -21,3 +22,5 @@ public:
     void scoreUp();
     int getScore();
 };
+
+#endif
