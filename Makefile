@@ -6,6 +6,8 @@ FILES=src/main.cpp src/ball.cpp src/player.cpp
 
 linux:
 	${COMPILE_L} ${FILES} -o Pong ${LIBS_L}
+	./Pong
 
 windows:
 	${COMPILE_W} ${FILES} -o Pong.exe ${LIBS_W}
+	Pong.exe
