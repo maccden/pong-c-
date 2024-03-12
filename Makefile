@@ -1,13 +1,11 @@
-COMPILE_L=g++
-COMPILE_W=gcc
+CC=g++
 LIBS_L=-lraylib -lGL -lm -lpthread -ldl -lrt -lX11
 LIBS_W=-lraylib -lopengl32 -lgdi32 -lwinmm
-FILES=src/main.cpp src/ball.cpp src/player.cpp
 
 linux:
-	${COMPILE_L} ${FILES} -o Pong ${LIBS_L}
+	${CC} src/*.cpp -o Pong ${LIBS_L}
 	./Pong
 
 windows:
-	${COMPILE_W} ${FILES} -o Pong.exe ${LIBS_W}
+	${CC} src/*.cpp -o Pong.exe ${LIBS_W}
 	Pong.exe
