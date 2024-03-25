@@ -27,7 +27,16 @@ class Ball
     void resetBallPosition();
 
 public:
+    /**
+     * @brief Construct a new Ball object
+     *
+     */
     Ball();
+
+    /**
+     * @brief Destroy the Ball object
+     *
+     */
     ~Ball();
     void updateBallFrame(Player &playerOne, Player &playerTwo);
     void drawBall();

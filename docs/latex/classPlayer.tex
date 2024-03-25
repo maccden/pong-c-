@@ -1,0 +1,128 @@
+\hypertarget{classPlayer}{}\doxysection{Player Class Reference}
+\label{classPlayer}\index{Player@{Player}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlayer_a75b05da95536ad9b6313c66541086f23}{Player}} (Vector2 player\+Pos)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}\label{classPlayer_a749d2c00e1fe0f5c2746f7505a58c062}} 
+{\bfseries $\sim$\+Player} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classPlayer}{Player}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlayer_ab20fb30bed285f9a82b41451f6b5b97d}{up}} (const Keyboard\+Key \&key)
+\begin{DoxyCompactList}\small\item\em This method does the logic for upper movement. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlayer_a3b2f1457f0f0071c9e9b22f9089f26f4}{down}} (const Keyboard\+Key \&key)
+\begin{DoxyCompactList}\small\item\em This method does the logic for lower movement. \end{DoxyCompactList}\item 
+Vector2 \& \mbox{\hyperlink{classPlayer_a4a3c9ddaf2003c94e5bc081cb287706e}{get\+Player\+Pos}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classPlayer}{Player}} Pos object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlayer_ab2eef07bbc73611b425538e34afdb214}\label{classPlayer_ab2eef07bbc73611b425538e34afdb214}} 
+void {\bfseries set\+Boundary} ()
+\begin{DoxyCompactList}\small\item\em Set the Boundary object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlayer_a2f8ee4f71ca93f8c5546d06247794fdd}\label{classPlayer_a2f8ee4f71ca93f8c5546d06247794fdd}} 
+void {\bfseries draw\+Player} ()
+\begin{DoxyCompactList}\small\item\em This method draws the ball. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPlayer_ade8fc4b4206d6eefd22b485abbebd100}\label{classPlayer_ade8fc4b4206d6eefd22b485abbebd100}} 
+void {\bfseries score\+Up} ()
+\begin{DoxyCompactList}\small\item\em This method does the score logic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classPlayer_a97e5447778ae6c384eedc532dcd8431d}{get\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Get the Score object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const Vector2 \mbox{\hyperlink{classPlayer_a60bb7d915a8db6d805ed5061460969b1}{get\+Player\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classPlayer}{Player}} Size object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPlayer_a75b05da95536ad9b6313c66541086f23}\label{classPlayer_a75b05da95536ad9b6313c66541086f23}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{Vector2}]{player\+Pos }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classPlayer}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+Pos} & Initial player position. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPlayer_a3b2f1457f0f0071c9e9b22f9089f26f4}\label{classPlayer_a3b2f1457f0f0071c9e9b22f9089f26f4}} 
+\index{Player@{Player}!down@{down}}
+\index{down@{down}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{down()}{down()}}
+{\footnotesize\ttfamily void Player\+::down (\begin{DoxyParamCaption}\item[{const Keyboard\+Key \&}]{key }\end{DoxyParamCaption})}
+
+
+
+This method does the logic for lower movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key from keyboard. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPlayer_a4a3c9ddaf2003c94e5bc081cb287706e}\label{classPlayer_a4a3c9ddaf2003c94e5bc081cb287706e}} 
+\index{Player@{Player}!getPlayerPos@{getPlayerPos}}
+\index{getPlayerPos@{getPlayerPos}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getPlayerPos()}{getPlayerPos()}}
+{\footnotesize\ttfamily Vector2 \& Player\+::get\+Player\+Pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the \mbox{\hyperlink{classPlayer}{Player}} Pos object. 
+
+\begin{DoxyReturn}{Returns}
+Vector2\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_a60bb7d915a8db6d805ed5061460969b1}\label{classPlayer_a60bb7d915a8db6d805ed5061460969b1}} 
+\index{Player@{Player}!getPlayerSize@{getPlayerSize}}
+\index{getPlayerSize@{getPlayerSize}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getPlayerSize()}{getPlayerSize()}}
+{\footnotesize\ttfamily const Vector2 Player\+::get\+Player\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the \mbox{\hyperlink{classPlayer}{Player}} Size object. 
+
+\begin{DoxyReturn}{Returns}
+const Vector2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_a97e5447778ae6c384eedc532dcd8431d}\label{classPlayer_a97e5447778ae6c384eedc532dcd8431d}} 
+\index{Player@{Player}!getScore@{getScore}}
+\index{getScore@{getScore}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily int Player\+::get\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the Score object. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classPlayer_ab20fb30bed285f9a82b41451f6b5b97d}\label{classPlayer_ab20fb30bed285f9a82b41451f6b5b97d}} 
+\index{Player@{Player}!up@{up}}
+\index{up@{up}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{up()}{up()}}
+{\footnotesize\ttfamily void Player\+::up (\begin{DoxyParamCaption}\item[{const Keyboard\+Key \&}]{key }\end{DoxyParamCaption})}
+
+
+
+This method does the logic for upper movement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & Key from keyboard. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/maty/\+Documents/dev/c++/pong-\/c-\//include/\mbox{\hyperlink{player_8hpp}{player.\+hpp}}\item 
+/home/maty/\+Documents/dev/c++/pong-\/c-\//src/player.\+cpp\end{DoxyCompactItemize}

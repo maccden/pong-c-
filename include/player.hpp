@@ -32,6 +32,11 @@ public:
     Vector2 getPlayerSize() const;
     void setPlayerBoundary();
     void drawPlayer();
+
+    /**
+     * @brief This method does the score logic.
+     * 
+     */
     void scoreUp();
     int getPlayerScore();
 };
