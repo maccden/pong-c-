@@ -1,64 +1,60 @@
 #include "../include/ball.hpp"
 
-const int Ball::RADIUS = 10;
-const Vector2 Ball::DEFAULT_SPEED = {5, 5};
-const float Ball::INCREMENT = 1.1f;
-
-Ball::Ball() : speed(DEFAULT_SPEED), ballPos({(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2}) {}
+Ball::Ball() : ballSpeed(BALL_SPEED), ballPosition({(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2}) {}
 
 Ball::~Ball()
 {
-    UnloadSound(PLAYER);
-    UnloadSound(WALL);
-    UnloadSound(SCORE);
+    UnloadSound(PLAYER_SOUND);
+    UnloadSound(WALL_SOUND);
+    UnloadSound(SCORE_SOUND);
 }
 
 void Ball::drawBall()
 {
-    DrawCircleV(ballPos, RADIUS, WHITE);
+    DrawCircleV(ballPosition, BALL_RADIUS, WHITE);
 }
 
-void Ball::updateBall(Player &p1, Player &p2)
+void Ball::updateBallFrame(Player &playerOne, Player &playerTwo)
 {
-    ballPos.x += speed.x;
-    ballPos.y += speed.y;
+    ballPosition.x += ballSpeed.x;
+    ballPosition.y += ballSpeed.y;
 
-    if ((ballPos.y - RADIUS) <= 0 || (ballPos.y + RADIUS) >= GetScreenHeight())
+    if ((ballPosition.y - BALL_RADIUS) <= 0 || (ballPosition.y + BALL_RADIUS) >= GetScreenHeight())
     {
-        speed.y = -speed.y;
-        PlaySound(WALL);
+        ballSpeed.y = -ballSpeed.y;
+        PlaySound(WALL_SOUND);
     }
 
-    if (CheckCollisionCircleRec(ballPos, RADIUS, {p2.getPlayerPos().x, p2.getPlayerPos().y, p2.getPlayerSize().x, p2.getPlayerSize().y}) ||
-        CheckCollisionCircleRec(ballPos, RADIUS, {p1.getPlayerPos().x, p1.getPlayerPos().y, p1.getPlayerSize().x, p1.getPlayerSize().y}))
+    if (CheckCollisionCircleRec(ballPosition, BALL_RADIUS, {playerTwo.getPlayerPosition().x, playerTwo.getPlayerPosition().y, playerTwo.getPlayerSize().x, playerTwo.getPlayerSize().y}) ||
+        CheckCollisionCircleRec(ballPosition, BALL_RADIUS, {playerOne.getPlayerPosition().x, playerOne.getPlayerPosition().y, playerOne.getPlayerSize().x, playerOne.getPlayerSize().y}))
     {
-        PlaySound(PLAYER);
-        speed.x = -speed.x;
-        speed.x *= INCREMENT;
+        PlaySound(PLAYER_SOUND);
+        ballSpeed.x = -ballSpeed.x;
+        ballSpeed.x *= BALL_SPEED_INCREMENT;
     }
 
-    if (ballPos.x < 0)
+    if (ballPosition.x < 0)
     {
-        PlaySound(SCORE);
-        p2.scoreUp();
-        resetBall();
+        PlaySound(SCORE_SOUND);
+        playerTwo.scoreUp();
+        resetBallPosition();
     }
 
-    if (ballPos.x > GetScreenWidth())
+    if (ballPosition.x > GetScreenWidth())
     {
-        PlaySound(SCORE);
-        p1.scoreUp();
-        resetBall();
+        PlaySound(SCORE_SOUND);
+        playerOne.scoreUp();
+        resetBallPosition();
     }
 }
 
-Vector2 Ball::getBallPos()
+Vector2 Ball::getBallPosition()
 {
-    return ballPos;
+    return ballPosition;
 }
 
-void Ball::resetBall()
+void Ball::resetBallPosition()
 {
-    ballPos = {(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
-    speed.x = -DEFAULT_SPEED.x * (speed.x < 0 ? -1 : 1);
+    ballPosition = {(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
+    ballSpeed.x = -BALL_SPEED.x * (ballSpeed.x < 0 ? -1 : 1);
 }

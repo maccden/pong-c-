@@ -1,40 +1,42 @@
-#include "../include/player.hpp"
 #include "../include/ball.hpp"
+
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+#define FONT_SIZE 40
+#define SCORE_TEXT_MARGIN_Y 20
 
 typedef enum GameScreen
 {
-    PAUSE,
-    GAME
+    PAUSE_SCREEN,
+    GAME_SCREEN
 } GameScreen;
 
-int main(int argc, char const *argv[])
+int main()
 {
-    const int SCREEN_W = 800, SCREEN_H = 600, FONT_SIZE_1 = 40, FONT_SIZE_2 = 20, TEXT_MARGIN_Y = 20;
-
-    InitWindow(SCREEN_W, SCREEN_H, "Pong!");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Pong!");
     SetTargetFPS(60);
     InitAudioDevice();
 
-    GameScreen currentScreen = GAME;
-    Player p1({25, SCREEN_H / 2 - Player::getPlayerSize().y / 2}),
-        p2({(float)SCREEN_W - 35, SCREEN_H / 2 - Player::getPlayerSize().y / 2});
+    GameScreen currentGameScreen = GAME_SCREEN;
+    Player playerOne({25, SCREEN_HEIGHT / 2 - PLAYER_SIZE.y / 2}),
+        playerTwo({SCREEN_WIDTH - 35, SCREEN_HEIGHT / 2 - PLAYER_SIZE.y / 2});
     Ball ball;
 
     while (!WindowShouldClose())
     {
         // update de los variables de cada menu
-        switch (currentScreen)
+        switch (currentGameScreen)
         {
-        case PAUSE:
+        case PAUSE_SCREEN:
         {
             if (IsKeyPressed(KEY_P))
-                currentScreen = GAME;
+                currentGameScreen = GAME_SCREEN;
             break;
         }
-        case GAME:
+        case GAME_SCREEN:
         {
             if (IsKeyPressed(KEY_P))
-                currentScreen = PAUSE;
+                currentGameScreen = PAUSE_SCREEN;
             break;
         }
         default:
@@ -42,37 +44,36 @@ int main(int argc, char const *argv[])
         }
 
         // movimientos
-        p1.up(KEY_W);
-        p1.down(KEY_S);
-        p2.up(KEY_I);
-        p2.down(KEY_K);
+        playerOne.moveUp(KEY_W);
+        playerOne.moveDown(KEY_S);
+        playerTwo.moveUp(KEY_I);
+        playerTwo.moveDown(KEY_K);
 
         // boundary
-        p1.setBoundary();
-        p2.setBoundary();
+        playerOne.setPlayerBoundary();
+        playerTwo.setPlayerBoundary();
 
         BeginDrawing();
         {
             // cambio de menus
-            switch (currentScreen)
+            switch (currentGameScreen)
             {
-            case PAUSE:
+            case PAUSE_SCREEN:
             {
                 ClearBackground(BLACK);
-                DrawText("PAUSE", SCREEN_W / 2 - MeasureText("PAUSE", FONT_SIZE_1) / 2, SCREEN_H / 2 - FONT_SIZE_1 / 2, FONT_SIZE_1, WHITE);
+                DrawText("PAUSE", SCREEN_WIDTH / 2 - MeasureText("PAUSE", FONT_SIZE) / 2, SCREEN_HEIGHT / 2 - FONT_SIZE / 2, FONT_SIZE, WHITE);
                 break;
             }
-            case GAME:
+            case GAME_SCREEN:
             {
                 ClearBackground(BLACK);
-                DrawLine(SCREEN_W / 2, 0, SCREEN_W / 2, SCREEN_H, GRAY);
-                p1.drawPlayer();
-                p2.drawPlayer();
+                DrawLine(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, SCREEN_HEIGHT, GRAY);
+                ball.updateBallFrame(playerOne, playerTwo);
                 ball.drawBall();
-                ball.updateBall(p1, p2);
-                DrawText(TextFormat("%i", p1.getScore()), SCREEN_W / 4 - MeasureText(TextFormat("%i", p1.getScore()), FONT_SIZE_1) / 2, TEXT_MARGIN_Y, FONT_SIZE_1, GRAY);
-                DrawText(TextFormat("%i", p2.getScore()), SCREEN_W / 1.3 - MeasureText(TextFormat("%i", p2.getScore()), FONT_SIZE_1) / 2, TEXT_MARGIN_Y, FONT_SIZE_1, GRAY);
-                DrawText("Player 1: 'W' Up, 'S' Down, Player 2: 'I' Up, 'K' Down.", 10, SCREEN_H - TEXT_MARGIN_Y, FONT_SIZE_2, GRAY);
+                playerOne.drawPlayer();
+                playerTwo.drawPlayer();
+                DrawText(TextFormat("%i", playerOne.getPlayerScore()), SCREEN_WIDTH / 4 - MeasureText(TextFormat("%i", playerOne.getPlayerScore()), FONT_SIZE) / 2, SCORE_TEXT_MARGIN_Y, FONT_SIZE, GRAY);
+                DrawText(TextFormat("%i", playerTwo.getPlayerScore()), SCREEN_WIDTH / 1.3 - MeasureText(TextFormat("%i", playerTwo.getPlayerScore()), FONT_SIZE) / 2, SCORE_TEXT_MARGIN_Y, FONT_SIZE, GRAY);
                 break;
             }
             default:

@@ -1,48 +1,45 @@
 #include "../include/player.hpp"
 
-const Vector2 Player::PLAYER_SIZE = {10.0f, 100.0f};
-const float Player::SPEED = 7.0f;
-
-Player::Player(Vector2 playerPos) : playerPos(playerPos), score(0) {}
+Player::Player(Vector2 playerPosition) : playerPosition(playerPosition), playerScore(0) {}
 
 Player::~Player() {}
 
-void Player::up(const KeyboardKey &key)
+void Player::moveUp(const KeyboardKey &key)
 {
-    playerPos.y -= IsKeyDown(key) ? SPEED : 0;
+    playerPosition.y -= IsKeyDown(key) ? PLAYER_SPEED : 0;
 }
 
-void Player::down(const KeyboardKey &key)
+void Player::moveDown(const KeyboardKey &key)
 {
-    playerPos.y += IsKeyDown(key) ? SPEED : 0;
+    playerPosition.y += IsKeyDown(key) ? PLAYER_SPEED : 0;
 }
 
-Vector2 &Player::getPlayerPos()
+Vector2 &Player::getPlayerPosition()
 {
-    return playerPos;
+    return playerPosition;
 }
 
-const Vector2 Player::getPlayerSize()
+Vector2 Player::getPlayerSize() const
 {
     return PLAYER_SIZE;
 }
 
-void Player::setBoundary()
+void Player::setPlayerBoundary()
 {
-    playerPos.y = Clamp(playerPos.y, 0, GetScreenHeight() - PLAYER_SIZE.y);
+    playerPosition.y = Clamp(playerPosition.y, 0, GetScreenHeight() - PLAYER_SIZE.y);
 }
 
 void Player::drawPlayer()
 {
-    DrawRectangleV(playerPos, PLAYER_SIZE, WHITE);
+    DrawRectangleV(playerPosition, PLAYER_SIZE, WHITE);
 }
 
 void Player::scoreUp()
 {
-    score++;
+    playerScore++;
 }
 
-int Player::getScore()
+int Player::getPlayerScore()
 {
-    return score;
+    return playerScore;
 }

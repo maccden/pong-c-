@@ -1,26 +1,39 @@
+/**
+ * @file player.hpp
+ * @author Casteglione Matias
+ * @brief This is the player implementation class
+ * @version 0.1
+ * @date 2024-03-25
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef PLAYER_HEADER
 #define PLAYER_HEADER
 
-#include "utils.h"
+#include "raylib.h"
+#include "raymath.h"
+
+#define PLAYER_SIZE Vector2({10.f, 100.f})
+#define PLAYER_SPEED 7.f
 
 class Player
 {
-    const static Vector2 PLAYER_SIZE;
-    const static float SPEED;
-    Vector2 playerPos;
-    int score;
+    Vector2 playerPosition;
+    int playerScore;
 
 public:
-    Player(Vector2 playerPos);
+    Player(Vector2 playerPosition);
     ~Player();
-    void up(const KeyboardKey &key);
-    void down(const KeyboardKey &key);
-    Vector2 &getPlayerPos();
-    static const Vector2 getPlayerSize();
-    void setBoundary();
+    void moveUp(const KeyboardKey &key);
+    void moveDown(const KeyboardKey &key);
+    Vector2 &getPlayerPosition();
+    Vector2 getPlayerSize() const;
+    void setPlayerBoundary();
     void drawPlayer();
     void scoreUp();
-    int getScore();
+    int getPlayerScore();
 };
 
 #endif
